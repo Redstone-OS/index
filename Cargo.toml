@@ -1,0 +1,44 @@
+[package]
+name = "index"
+version = "0.1.0"
+edition = "2021"
+authors = ["RedstoneOS Team"]
+description = "Index - RedstoneOS File Explorer"
+
+[[bin]]
+name = "index"
+path = "src/main.rs"
+test = false
+bench = false
+
+[lib]
+name = "index"
+path = "src/lib.rs"
+test = false
+bench = false
+
+[dependencies]
+redpowder = { path = "../../../redpowder" }
+
+[profile.release]
+panic = "abort"
+opt-level = 2
+lto = false
+codegen-units = 1
+debug = 2
+strip = "none"
+debug-assertions = true
+overflow-checks = true
+incremental = false
+
+[profile.opt-release]
+inherits = "release"
+opt-level = 3
+lto = "thin"
+codegen-units = 1
+panic = "abort"
+debug = 0
+strip = "symbols"
+debug-assertions = false
+overflow-checks = false
+incremental = false
